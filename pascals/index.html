@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Pascal's Triangle Generator</h1>
+    <div class="triangle-container" id="main">
+    </div>
+
+    <div class="form-container">
+        <input type="number" min="1" placeholder="Enter boundary number" id="boundary"/>
+        <button id="btn">Generate!</button>
+    </div>
+    
+    <script>
+            const btn = document.getElementById('btn')
+            const main = document.getElementById('main')
+            
+            btn.addEventListener('click', () => {
+                main.innerHTML = ""
+                const boundary = document.getElementById('boundary').value
+                let current_boundary = 0
+                let box_count = 1
+                // rows 
+                for (let i=0;i<boundary;i++){
+                    let newdiv = document.createElement('div')
+                    newdiv.classList.add('box-row')
+                    main.appendChild(newdiv)
+                    // columns
+                    for (let j=1;j<=box_count;j++){
+                        let box = document.createElement('span');
+                        box.classList.add('box')
+                        newdiv.appendChild(box)
+                    }
+                    box_count = box_count + 1
+
+                }
+
+            })
+
+    </script>
+</body>
+</html>
