@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <title>Photos Filter</title>
+</head>
+<body>
+    <div class="app">
+        <div class="image-container">
+            <img src="food.jpeg" id="img" alt="Food Image" class="image"/>
+        </div>
+        <div class="buttons">
+            <button id="grayscale">Grayscale</button>
+            <button id="blur">Blur</button>
+            <button id="sepia">Sepia</button>
+            <button id="saturate">Saturate</button>
+        </div>
+                    
+    </div>
+
+    <script>
+        const grayscale = document.querySelector('#grayscale')
+        const blur = document.querySelector('#blur')
+        const sepia = document.querySelector('#sepia')
+        const saturate = document.querySelector('#saturate')
+        const image = document.querySelector('#img')
+
+        grayscale.addEventListener('click', () => {
+            img.style.filter = "grayscale(100%)"
+        })
+
+        blur.addEventListener('click', () => {
+            img.style.filter = "blur(30px)"
+        })
+
+        sepia.addEventListener('click', () => {
+            img.style.filter = "sepia(100%)"
+        })
+
+        saturate.addEventListener('click', () => {
+            img.style.filter = "saturate(40%)"
+        })        
+    </script>
+</body>
+</html>

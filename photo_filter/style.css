@@ -1,0 +1,45 @@
+html,body{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    background-color: rgb(85, 85, 85);
+}
+
+
+.app{
+    height: 100vh;
+}
+
+.image-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+}
+
+.image{
+    border-radius: 12px;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+button{
+    outline: none;
+    background-color: black;
+    border-radius: 8px;
+    padding: 8px;
+    margin-right: 12px;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+button:active{
+    transform: scale(0.99);
+}
