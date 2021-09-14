@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <title>Weather Application</title>
+</head>
+<body>
+            
+    <div class="temp-container">
+                <h1 id="temp" class="temp">--</h1>
+                <p id="weather">Weather Description : --</p>
+                <p id="date">Date: --</p>
+                <p id="lat">Latitude: -- </p>
+                <p id="long">Longitude: -- </p>
+            </div>
+
+            <p id="error" style="color:red;"></p>
+    <script>
+
+// base: "stations"
+// clouds: {all: 0}
+// cod: 200
+// coord: {lon: -0.187, lat: 5.6037}
+// dt: 1623098897
+// id: 2306104
+// main: {temp: 301.2, feels_like: 304.47, temp_min: 301.2, temp_max: 301.2, pressure: 1010, …}
+// name: "Accra"
+// sys:
+// country: "GH"
+// id: 1126
+// sunrise: 1623044802
+// sunset: 1623089570
+// type: 1
+// __proto__: Object
+// timezone: 0
+// visibility: 10000
+// weather: [{…}]
+// wind: {speed: 2.06, deg: 180}
+
+        // const x = document.getElementById("demo");
+        const long = document.getElementById('long')
+        const lat = document.getElementById('lat')
+        const err = document.getElementById('error')
+        const date = document.getElementById('date')
+        const temp = document.getElementById('temp')
+        const weather = document.getElementById("weather")
+
+
+        function getLocation() {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+          }
+        }
+
+        function fetchWeather(latitude, longitude){
+            fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=254946df48cca37f50d91210c0a40000`)
+            .then(res => res.json())
+            .then(d => {
+                temp.innerHTML = Math.round(d.main.temp - 273.15)
+                date.innerHTML = "Date" + new Date()
+                weather.innerHTML = "Weather Description: " + d.weather[0].description
+                console.log(d)
+            })
+            .catch(e => {
+                err.innerHTML = "Could not determine your weather ensure you have an internet connection and have allowed access to your location."
+            })
+
+        }
+
+        function showPosition(position) {
+            lat.innerHTML = "Latitude: " + position.coords.latitude
+            long.innerHTML = "Latitude: " + position.coords.longitude
+            console.log('long', position.coords.longitude)
+            console.log('lati', position.coords.latitude)
+            fetchWeather(position.coords.latitude, position.coords.longitude)
+        //   x.innerHTML = "Latitude: " + position.coords.latitude +
+        //   "<br>Longitude: " + position.coords.longitude;
+        }
+
+        getLocation()
+
+        
+        </script>
+</body>
+</html>
